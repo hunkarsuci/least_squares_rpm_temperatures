@@ -55,6 +55,3 @@ The closed-form Least Squares estimate is:
 \]
 
 ---
-
-## Project Structure
-

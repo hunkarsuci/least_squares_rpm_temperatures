@@ -19,20 +19,7 @@ Given noisy temperature measurements recorded at different RPM values, the objec
 The estimated model represents:
 - a proportional relationship between RPM and temperature, and
 - a constant offset term.
-
----
-
-## Project Structure
-least_squares_rpm_temperatures/
-│
-├── src/
-│ ├── least_squares.py # Least Squares estimation implementation
-│ ├── data.py # Synthetic and reproducible dataset generator
-│ └── demo_fit_and_plot.py # End-to-end demo with evaluation and plotting
-│
-├── requirements.txt
-└── README.md
-
+- 
 ---
 
 ## Key Features

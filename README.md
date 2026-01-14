@@ -1,36 +1,50 @@
-# Least Squares Estimation: Temperature-RPM Model
+# Least Squares Estimation of a Temperature–RPM Model
 
-This project implements the **closed-form Least Squares (LS) estimation** to identify a linear relationship between temperature and RPM from noisy measurement data.  
-It demonstrates model formulation, parameter estimation, validation, and visualization using Python.
+## Overview
+
+This repository presents a **batch Least Squares (LS) estimation framework** for identifying a linear relationship between temperature and rotational speed (RPM) from noisy measurement data.  
+The project focuses on **model formulation, estimation theory, numerical implementation, and validation**, and is intended as a concise demonstration of parameter estimation techniques commonly used in engineering systems.
+
+The implementation is written in Python and follows a clear separation between:
+- estimation algorithms,
+- data generation, and
+- evaluation / visualization.
 
 ---
 
-## Problem Description
+## Problem Formulation
 
-Given noisy measurements of temperature at different RPM values, the goal is to estimate the parameters of the linear model:
+Given a set of noisy measurements:
 
 \[
-y_i = x_1 r_i + x_2
+\mathcal{D} = \{(r_i, y_i)\}_{i=1}^{n}
 \]
 
 where:
-- \( y_i \) is the measured temperature  
-- \( r_i \) is the RPM  
-- \( x_1 \) and \( x_2 \) are unknown constant parameters  
+- \( r_i \) denotes RPM,
+- \( y_i \) denotes the measured temperature,
 
-The estimation is performed using **batch Least Squares**.
+the goal is to estimate the parameters of the linear model:
+
+\[
+y_i = x_1 r_i + x_2 + v_i
+\]
+
+with:
+- \( \mathbf{x} = [x_1 \;\; x_2]^T \) being unknown constant parameters,
+- \( v_i \) representing measurement noise.
 
 ---
 
-## Least Squares Solution
+## Least Squares Estimation
 
-The measurement model is written in matrix form:
+The measurement model is written in matrix form as:
 
 \[
 \mathbf{y} \approx \mathbf{H}\mathbf{x}
 \]
 
-with:
+where:
 
 \[
 \mathbf{H} =
@@ -41,17 +55,27 @@ r_2 & 1 \\
 r_n & 1
 \end{bmatrix},
 \quad
-\mathbf{x} =
+\mathbf{y} =
 \begin{bmatrix}
-x_1 \\
-x_2
+y_1 \\
+y_2 \\
+\vdots \\
+y_n
 \end{bmatrix}
 \]
 
-The closed-form Least Squares estimate is:
+The batch Least Squares solution is obtained by minimizing the squared residual norm:
 
 \[
-\hat{\mathbf{x}} = (\mathbf{H}^T\mathbf{H})^{-1}\mathbf{H}^T\mathbf{y}
+\hat{\mathbf{x}} = \arg\min_{\mathbf{x}} \|\mathbf{y} - \mathbf{H}\mathbf{x}\|^2
 \]
+
+which yields the closed-form estimator:
+
+\[
+\hat{\mathbf{x}} = (\mathbf{H}^T \mathbf{H})^{-1} \mathbf{H}^T \mathbf{y}
+\]
+
+This formulation assumes full column rank of \( \mathbf{H} \).
 
 ---

@@ -19,7 +19,7 @@ Given noisy temperature measurements recorded at different RPM values, the objec
 The estimated model represents:
 - a proportional relationship between RPM and temperature, and
 - a constant offset term.
-- 
+
 ---
 
 ## Key Features

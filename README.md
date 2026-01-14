@@ -1,4 +1,4 @@
-# Least Squares Estimation: Temperature–RPM Model
+# Least Squares Estimation: Temperature-RPM Model
 
 This project implements the **closed-form Least Squares (LS) estimation** to identify a linear relationship between temperature and RPM from noisy measurement data.  
 It demonstrates model formulation, parameter estimation, validation, and visualization using Python.
